@@ -1,35 +1,58 @@
 class Animal {
-    var nom;
-    var esp;
-    var edad;
+  String nombre;
+  String especie;
+   int edad;
 
-    Animal(n, e, ed) {
-        this.nomb = n;
-        this.esp = e;
-        this.edad = ed;
+  Animal(this.nombre, this.especie, this.edad);
+
+  void hacerSonido() {
+    print("el animal hace un sonido");
+  }
+
+  void mostrarInfo() {
+    print("Nombre: " + nombre + ", Especie: " + especie + ", Edad: " + edad.toString());
+  }
+
+  bool esAdulto() {
+    if (edad >= 3) {
+      return true;
+    } else {
+      return false;
     }
-
-    void sonido(){
-        print("el animal hace un ruido");
-
-    }
-    void info (){
-        print("nombre: $nomb, es un $esp de $edad años");
-
-    }
-
+  }
 }
+
+
 
 class Perro extends Animal {
-    Perro (n, ed){
-        this.nomb = n;
-        this.edad = ed;
-    }
+  
+  Perro(String n, int e) : super(n, "Perro", e);
+
+  @override
+  void hacerSonido() {
+    print("Guau!!!! Soy " + nombre);
+  }
+
+  void buscarPelota() {
+    print(nombre + " est buscando la pelota");
+  }
 }
 
-void main (){
-    var a1 = Animal ("Boby", "Gato", 2);
-    a1.info()
+void main() {
+  var animalito = Animal("Bola de Nieves", "Gato", 2);
+  var miPerrito = Perro("Fido", 5);
+
+  print("---* Datos del Animal *---");
+  animalito.mostrarInfo();
+  animalito.hacerSonido();
+  print("Es adulto?: " + animalito.esAdulto().toString());
+
+  print("\n--- Datos del Perro ---");
+  miPerrito.mostrarInfo();
+  miPerrito.hacerSonido();
+  print("Es adulto?: " + miPerrito.esAdulto().toString());
+
+  miPerrito.buscarPelota();
 }
 
 
